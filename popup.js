@@ -242,8 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  settingsLink.addEventListener('click', (e) => {
-    e.preventDefault();
+  settingsLink.addEventListener('click', () => {
     chrome.runtime.openOptionsPage();
   });
 

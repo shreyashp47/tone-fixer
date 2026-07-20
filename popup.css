@@ -39,6 +39,31 @@ body {
   color: #7c3aed;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.settings-btn:hover {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+}
+
 .provider-badge {
   font-size: 10px;
   font-weight: 600;
@@ -241,20 +266,6 @@ body {
   color: #7c3aed;
   margin-bottom: 10px;
   font-family: 'JetBrains Mono', monospace;
-}
-
-.footer {
-  text-align: center;
-}
-
-.footer a {
-  color: #555;
-  font-size: 11px;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  color: #7c3aed;
 }
 
 .hidden {
