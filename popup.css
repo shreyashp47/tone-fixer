@@ -193,7 +193,12 @@ body {
 }
 
 .tone-row .tone-quick-pick {
-  flex-shrink: 0;
+  flex: 1;
+}
+
+.tone-row .tone-quick-pick .tone-pill {
+  flex: 1;
+  text-align: center;
 }
 
 .tone-row .select-input {
@@ -203,11 +208,6 @@ body {
 .tone-quick-pick {
   display: flex;
   gap: 4px;
-}
-
-.tone-quick-pick .tone-pill {
-  flex: 1;
-  text-align: center;
 }
 
 .input-footer {
