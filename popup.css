@@ -29,12 +29,6 @@ body {
   gap: 8px;
 }
 
-.header-icon {
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
-}
-
 .title {
   font-size: 15px;
   font-weight: 700;
