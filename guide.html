@@ -121,6 +121,12 @@
     }
     .tip strong { color: #fff; }
 
+    .brand-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
     .footer-note {
       text-align: center;
       font-size: 12px;
@@ -155,7 +161,11 @@
     </p>
 
     <div class="card">
-      <h2><span>🟢</span> Groq <span class="badge badge-free">Free</span></h2>
+      <h2>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#34d399"/>
+        </svg>
+        Groq <span class="badge badge-free">Free</span></h2>
       <p>Groq offers a free tier with high-speed inference. No credit card required.</p>
       <ol>
         <li>Go to <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a></li>
@@ -172,7 +182,11 @@
     </div>
 
     <div class="card">
-      <h2>🔵 Google Gemini <span class="badge badge-paid">Billing</span></h2>
+      <h2>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2l1.5 5.5L19 7l-4.5 2.5L16 14l-4-3-4 3 1.5-4.5L5 7l5.5-.5L12 2z" fill="#4285f4"/>
+        </svg>
+        Google Gemini <span class="badge badge-paid">Billing</span></h2>
       <p>Gemini has a free tier with some limits; billing required for higher usage.</p>
       <ol>
         <li>Go to <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></li>
@@ -184,7 +198,12 @@
     </div>
 
     <div class="card">
-      <h2>🟠 ChatGPT (OpenAI) <span class="badge badge-paid">Billing</span></h2>
+      <h2>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10a37f" stroke-width="2"/>
+          <path d="M7 12l3 3 7-7" stroke="#10a37f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        ChatGPT (OpenAI) <span class="badge badge-paid">Billing</span></h2>
       <p>OpenAI requires adding billing info even for low usage.</p>
       <ol>
         <li>Go to <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a></li>
@@ -197,7 +216,12 @@
     </div>
 
     <div class="card">
-      <h2>🟣 Claude (Anthropic) <span class="badge badge-paid">Billing</span></h2>
+      <h2>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="#d97706" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" fill="#d97706"/>
+        </svg>
+        Claude (Anthropic) <span class="badge badge-paid">Billing</span></h2>
       <p>Anthropic requires billing. They offer some free credits for new accounts.</p>
       <ol>
         <li>Go to <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com/settings/keys</a></li>
@@ -209,7 +233,12 @@
     </div>
 
     <div class="card">
-      <h2>⚫ xAI Grok <span class="badge badge-paid">Billing</span></h2>
+      <h2>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M6 6l12 12" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        xAI Grok <span class="badge badge-paid">Billing</span></h2>
       <p>xAI requires a paid account for API access.</p>
       <ol>
         <li>Go to <a href="https://console.x.ai" target="_blank">console.x.ai</a></li>
