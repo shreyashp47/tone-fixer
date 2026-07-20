@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Tone dropdown ---
   toneSelect.addEventListener('change', () => {
     selectedTone = toneSelect.value;
+    chrome.storage.local.set({ selectedTone });
   });
 
   // --- Target buttons (Teams/Chat vs Email) ---
@@ -41,18 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
         targetGroup.querySelectorAll('.target-btn').forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         selectedTarget = btn.dataset.target;
+        chrome.storage.local.set({ selectedTarget });
       });
     });
   }
 
-  // --- Load stored provider and instruction ---
-  chrome.storage.local.get(['selectedProvider', 'apiKeys', 'instructionText'], (data) => {
+  // --- Load stored state ---
+  chrome.storage.local.get(['selectedProvider', 'apiKeys', 'instructionText', 'selectedTone', 'selectedTarget'], (data) => {
     const id = data.selectedProvider || 'groq';
     const keys = data.apiKeys || {};
     const provider = PROVIDERS[id];
     provider.key = keys[id] || provider.defaultKey;
 
     if (providerLabel) providerLabel.textContent = provider.name;
+
+    if (data.selectedTone && toneSelect) {
+      toneSelect.value = data.selectedTone;
+      selectedTone = data.selectedTone;
+    }
+
+    if (data.selectedTarget && targetGroup) {
+      targetGroup.querySelectorAll('.target-btn').forEach((b) => {
+        b.classList.toggle('active', b.dataset.target === data.selectedTarget);
+      });
+      selectedTarget = data.selectedTarget;
+    }
 
     if (instructionInput && data.instructionText) {
       instructionInput.value = data.instructionText;
