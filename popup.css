@@ -205,6 +205,11 @@ body {
   gap: 4px;
 }
 
+.tone-quick-pick .tone-pill {
+  flex: 1;
+  text-align: center;
+}
+
 .input-footer {
   display: flex;
   gap: 6px;
