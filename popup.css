@@ -183,7 +183,7 @@ body {
 }
 
 .row-tone {
-  align-items: flex-start;
+  align-items: flex-end;
   margin-bottom: 8px;
 }
 
@@ -224,8 +224,9 @@ body {
 
 .col-generate .btn {
   margin-bottom: 0;
-  height: 100%;
   white-space: nowrap;
+  padding: 6px 16px;
+  height: auto;
 }
 
 .target-hint {
@@ -234,6 +235,8 @@ body {
   color: #555;
   margin-bottom: 8px;
   line-height: 1.3;
+  text-align: center;
+  padding: 0 2px;
 }
 
 .btn-primary {
