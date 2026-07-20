@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Load stored provider ---
-  chrome.storage.local.get(['selectedProvider', 'apiKeys'], (data) => {
+  // --- Load stored provider and instruction ---
+  chrome.storage.local.get(['selectedProvider', 'apiKeys', 'instructionText'], (data) => {
     const id = data.selectedProvider || 'groq';
     const keys = data.apiKeys || {};
     const provider = PROVIDERS[id];
@@ -54,11 +54,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (providerLabel) providerLabel.textContent = provider.name;
 
+    if (instructionInput && data.instructionText) {
+      instructionInput.value = data.instructionText;
+    }
+
     if (!provider.key) {
       missingKeyNotice.classList.remove('hidden');
       mainContent.classList.add('hidden');
     }
   });
+
+  // --- Save instruction on every keystroke ---
+  if (instructionInput) {
+    instructionInput.addEventListener('input', () => {
+      chrome.storage.local.set({ instructionText: instructionInput.value });
+    });
+  }
 
   // --- Error helpers ---
   function showError(msg) {
