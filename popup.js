@@ -29,9 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedTone = 'polite';
   let selectedTarget = 'teams';
 
+  // --- Tone quick-pick pills ---
+  const toneQuickPick = document.getElementById('toneQuickPick');
+  if (toneQuickPick) {
+    toneQuickPick.querySelectorAll('.tone-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        toneQuickPick.querySelectorAll('.tone-pill').forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+        selectedTone = pill.dataset.tone;
+        toneSelect.value = selectedTone;
+        chrome.storage.local.set({ selectedTone });
+      });
+    });
+  }
+
   // --- Tone dropdown ---
   toneSelect.addEventListener('change', () => {
     selectedTone = toneSelect.value;
+    if (toneQuickPick) {
+      toneQuickPick.querySelectorAll('.tone-pill').forEach((p) => {
+        p.classList.toggle('active', p.dataset.tone === selectedTone);
+      });
+    }
     chrome.storage.local.set({ selectedTone });
   });
 
@@ -59,6 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (data.selectedTone && toneSelect) {
       toneSelect.value = data.selectedTone;
       selectedTone = data.selectedTone;
+      if (toneQuickPick) {
+        toneQuickPick.querySelectorAll('.tone-pill').forEach((p) => {
+          p.classList.toggle('active', p.dataset.tone === selectedTone);
+        });
+      }
     }
 
     if (data.selectedTarget && targetGroup) {
@@ -162,14 +186,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- Copy button ---
+  const copyIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+  const checkIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
   copyBtn.addEventListener('click', async () => {
     const text = outputText.value;
     if (!text) return;
     try {
       await navigator.clipboard.writeText(text);
-      const orig = copyBtn.textContent;
-      copyBtn.textContent = 'Copied!';
-      setTimeout(() => { copyBtn.textContent = orig; }, 1500);
+      copyBtn.innerHTML = checkIcon;
+      copyBtn.style.color = '#34d399';
+      setTimeout(() => {
+        copyBtn.innerHTML = copyIcon;
+        copyBtn.style.color = '';
+      }, 1500);
     } catch {
       showError('Failed to copy to clipboard.');
     }

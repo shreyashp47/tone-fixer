@@ -48,6 +48,11 @@
       <div class="row row-tone">
         <div class="col">
           <label class="label">Tone</label>
+          <div class="tone-quick-pick" id="toneQuickPick">
+            <button class="tone-pill active" data-tone="polite">Polite</button>
+            <button class="tone-pill" data-tone="casual">Casual</button>
+            <button class="tone-pill" data-tone="formal">Formal</button>
+          </div>
           <select id="toneSelect" class="select-input">
             <option value="polite">Polite</option>
             <option value="casual">Casual</option>
@@ -71,9 +76,10 @@
         <button class="target-btn active" data-target="teams">Teams / Chat</button>
         <button class="target-btn" data-target="email">Email</button>
       </div>
+      <span class="target-hint" id="targetHint">Chat-style: concise and conversational · Email: proper structure and formatting</span>
 
       <label for="instruction" class="label">Instructions (optional)</label>
-      <input type="text" id="instruction" class="text-input" placeholder="e.g. Make it sound more professional..." />
+      <input type="text" id="instruction" class="text-input" placeholder='e.g. "Sign as Shreyash", "Keep it under 3 sentences", "Make it sound urgent"' />
 
       <div id="errorMsg" class="error-msg hidden"></div>
 
