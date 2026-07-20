@@ -108,6 +108,7 @@ function prompt(text, tone, target) {
 document.addEventListener('DOMContentLoaded', () => {
   const inputText = document.getElementById('inputText');
   const outputText = document.getElementById('outputText');
+  const outputStats = document.getElementById('outputStats');
   const generateBtn = document.getElementById('generateBtn');
   const copyBtn = document.getElementById('copyBtn');
   const toneGroup = document.getElementById('toneGroup');
@@ -218,6 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const result = await response.json();
       outputText.value = provider.parseResponse(result);
+      const chars = outputText.value.length;
+      const words = outputText.value.trim().split(/\s+/).filter(Boolean).length;
+      outputStats.textContent = `${words} words · ${chars} chars`;
     } catch (err) {
       showError(`Network error: ${err.message}`);
     }

@@ -45,7 +45,10 @@
 
       <div id="loadingSpinner" class="spinner hidden">Rewriting…</div>
 
-      <label for="outputText" class="label">Result</label>
+      <div class="label-row">
+        <label for="outputText" class="label">Result</label>
+        <span id="outputStats" class="output-stats"></span>
+      </div>
       <textarea id="outputText" class="textarea textarea-result" readonly placeholder="Rewritten text will appear here..."></textarea>
 
       <button id="copyBtn" class="btn btn-secondary">Copy to Clipboard</button>
