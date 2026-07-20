@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const outputStats = document.getElementById('outputStats');
   const generateBtn = document.getElementById('generateBtn');
   const copyBtn = document.getElementById('copyBtn');
-  const toneGroup = document.getElementById('toneGroup');
+  const toneSelect = document.getElementById('toneSelect');
   const targetGroup = document.getElementById('targetGroup');
   const errorMsg = document.getElementById('errorMsg');
   const loadingSpinner = document.getElementById('loadingSpinner');
@@ -29,15 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedTone = 'polite';
   let selectedTarget = 'teams';
 
-  // --- Tone buttons ---
-  toneGroup.querySelectorAll('.tone-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      toneGroup.querySelectorAll('.tone-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedTone = btn.dataset.tone;
-    });
+  // --- Tone dropdown ---
+  toneSelect.addEventListener('change', () => {
+    selectedTone = toneSelect.value;
   });
-  toneGroup.querySelector('.tone-btn').classList.add('active');
 
   // --- Target buttons (Teams/Chat vs Email) ---
   if (targetGroup) {
