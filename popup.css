@@ -242,6 +242,12 @@ body {
   cursor: not-allowed;
 }
 
+.action-icon-btn.ready {
+  color: #7c3aed;
+  border-color: #7c3aed;
+  background: rgba(124, 58, 237, 0.1);
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }

@@ -110,9 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Live char counter on input text ---
+  // --- Live char counter + generate button state on input text ---
   if (inputText && inputStats) {
-    const updateChars = () => { inputStats.textContent = inputText.value.length + ' chars'; };
+    const updateChars = () => {
+      const len = inputText.value.length;
+      inputStats.textContent = len + ' chars';
+      generateBtn.classList.toggle('ready', len > 0);
+    };
     inputText.addEventListener('input', updateChars);
     updateChars();
   }
