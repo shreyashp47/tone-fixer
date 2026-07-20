@@ -115,16 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadingSpinner = document.getElementById('loadingSpinner');
   const missingKeyNotice = document.getElementById('missingKeyNotice');
   const openOptionsLink = document.getElementById('openOptionsLink');
+  const settingsLink = document.getElementById('settingsLink');
   const mainContent = document.getElementById('mainContent');
   const providerLabel = document.getElementById('providerLabel');
-  const sentenceCountInput = document.getElementById('sentenceCount');
-  const lengthGroup = document.getElementById('lengthGroup');
   const targetGroup = document.getElementById('targetGroup');
-  const settingsLink = document.getElementById('settingsLink');
 
   let selectedTone = 'polite';
   let selectedTarget = 'teams';
-  let selectedLength = 'brief';
 
   toneGroup.querySelectorAll('.tone-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -145,32 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (lengthGroup) {
-    lengthGroup.querySelectorAll('.length-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        lengthGroup.querySelectorAll('.length-btn').forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        selectedLength = btn.dataset.length;
-      });
-    });
-  }
-
-  chrome.storage.local.get(['selectedProvider', 'apiKeys', 'lengthMode', 'sentenceCount'], (data) => {
+  chrome.storage.local.get(['selectedProvider', 'apiKeys'], (data) => {
     const id = data.selectedProvider || 'groq';
     const keys = data.apiKeys || {};
     const provider = PROVIDERS[id];
     provider.key = keys[id] || provider.defaultKey;
-
-    if (sentenceCountInput) {
-      sentenceCountInput.value = data.sentenceCount || 3;
-    }
-
-    if (lengthGroup && data.lengthMode) {
-      lengthGroup.querySelectorAll('.length-btn').forEach((b) => {
-        b.classList.toggle('active', b.dataset.length === data.lengthMode);
-      });
-      selectedLength = data.lengthMode;
-    }
 
     if (providerLabel) providerLabel.textContent = provider.name;
 
@@ -217,12 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     provider.key = apiKey;
-    const sentenceCount = Math.min(Math.max(parseInt(sentenceCountInput?.value) || 3, 1), 20);
-    if (sentenceCountInput) sentenceCountInput.value = sentenceCount;
-    const tokensPerSentence = selectedLength === 'detailed' ? 400 : 200;
-    const maxTokens = Math.min(Math.max(sentenceCount * tokensPerSentence, 128), 8192);
-    chrome.storage.local.set({ lengthMode: selectedLength, sentenceCount });
-    const req = provider.buildRequest(text, selectedTone, maxTokens, selectedTarget);
+    const req = provider.buildRequest(text, selectedTone, 1024, selectedTarget);
 
     setLoading(true);
 
