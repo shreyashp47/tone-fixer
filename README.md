@@ -27,7 +27,8 @@
 4. Click **Generate**
 5. Copy the result with one click
 
-> **First time?** Open Settings and enter an API key for your preferred provider. Groq offers a free tier — no credit card required.
+> **First time?** Open Settings and enter an API key for your preferred provider.
+> Groq offers a **free tier** (no credit card) — see the [API Key Guide](guide.html).
 
 ## Providers
 

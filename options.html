@@ -129,12 +129,16 @@
       margin-top: 6px;
       font-size: 12px;
     }
-    .key-hint a {
+    .key-hint a, .key-help a {
       color: #7c3aed;
       text-decoration: none;
     }
-    .key-hint a:hover {
+    .key-hint a:hover, .key-help a:hover {
       text-decoration: underline;
+    }
+    .key-help {
+      margin-top: 8px;
+      font-size: 12px;
     }
 
     .btn {
@@ -255,6 +259,9 @@
         <label for="apiKey" id="keyLabel">API Key</label>
         <input type="password" id="apiKey" placeholder="gsk_..." />
         <div class="key-hint" id="keyHint"></div>
+        <div class="key-help">
+          <a href="guide.html" target="_blank">📘 How to get an API key?</a>
+        </div>
         <button class="btn btn-primary" id="save">Save</button>
       </div>
 

@@ -1,3 +1,12 @@
+/**
+ * Tone Fixer — Options Page Controller
+ *
+ * Manages provider selection and API key storage.
+ * Keys are saved to chrome.storage.local under the "apiKeys" key
+ * as { [providerId]: "the-api-key" }.
+ */
+
+/** Per-provider metadata: label, placeholder, and link to get a key. */
 const PROVIDER_META = {
   anthropic: {
     label: 'Anthropic API Key',
