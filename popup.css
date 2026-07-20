@@ -183,14 +183,71 @@ body {
 }
 
 .row-tone {
-  align-items: flex-end;
   margin-bottom: 8px;
+}
+
+.tone-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.tone-row .tone-quick-pick {
+  flex-shrink: 0;
+}
+
+.tone-row .select-input {
+  flex: 1;
 }
 
 .tone-quick-pick {
   display: flex;
   gap: 4px;
-  margin-bottom: 4px;
+}
+
+.input-footer {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+  margin-bottom: 8px;
+}
+
+.input-footer .textarea {
+  flex: 1;
+  min-height: 52px;
+}
+
+.action-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.action-icon-btn:hover:not(:disabled) {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border-color: #7c3aed;
+}
+
+.action-icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.action-icon-btn .spin {
+  animation: spin 1s linear infinite;
 }
 
 .tone-pill {
@@ -215,18 +272,6 @@ body {
   background: #7c3aed;
   border-color: #7c3aed;
   color: #fff;
-}
-
-.col-generate {
-  flex: 0 0 auto;
-  min-width: 100px;
-}
-
-.col-generate .btn {
-  margin-bottom: 0;
-  white-space: nowrap;
-  padding: 6px 16px;
-  height: auto;
 }
 
 .btn-primary {
