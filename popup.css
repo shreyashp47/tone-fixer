@@ -175,6 +175,24 @@ body {
   font-family: inherit;
 }
 
+.text-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  background: #0e0e14;
+  color: #e0e0e0;
+  outline: none;
+  margin-bottom: 12px;
+  transition: border-color 0.15s;
+}
+
+.text-input:focus {
+  border-color: #7c3aed;
+}
+
 .btn-primary {
   background: #7c3aed;
   color: #fff;

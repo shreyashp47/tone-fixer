@@ -1,7 +1,7 @@
 const PROVIDERS = {
   anthropic: {
     name: 'Claude',
-    buildRequest(text, tone, maxTokens, target) {
+    buildRequest(text, tone, maxTokens, target, instruction) {
       return {
         url: 'https://api.anthropic.com/v1/messages',
         headers: {
@@ -13,7 +13,7 @@ const PROVIDERS = {
         body: JSON.stringify({
           model: 'claude-sonnet-4-5',
           max_tokens: maxTokens,
-          messages: [{ role: 'user', content: prompt(text, tone, target) }],
+          messages: [{ role: 'user', content: prompt(text, tone, target, instruction) }],
         }),
       };
     },
@@ -23,7 +23,7 @@ const PROVIDERS = {
   },
   openai: {
     name: 'ChatGPT',
-    buildRequest(text, tone, maxTokens, target) {
+    buildRequest(text, tone, maxTokens, target, instruction) {
       return {
         url: 'https://api.openai.com/v1/chat/completions',
         headers: {
@@ -33,7 +33,7 @@ const PROVIDERS = {
         body: JSON.stringify({
           model: 'gpt-4o',
           max_tokens: maxTokens,
-          messages: [{ role: 'user', content: prompt(text, tone, target) }],
+          messages: [{ role: 'user', content: prompt(text, tone, target, instruction) }],
         }),
       };
     },
@@ -43,12 +43,12 @@ const PROVIDERS = {
   },
   google: {
     name: 'Gemini',
-    buildRequest(text, tone, maxTokens, target) {
+    buildRequest(text, tone, maxTokens, target, instruction) {
       return {
         url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${this.key}`,
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt(text, tone, target) }] }],
+          contents: [{ parts: [{ text: prompt(text, tone, target, instruction) }] }],
         }),
       };
     },
@@ -58,7 +58,7 @@ const PROVIDERS = {
   },
   grok: {
     name: 'Grok',
-    buildRequest(text, tone, maxTokens, target) {
+    buildRequest(text, tone, maxTokens, target, instruction) {
       return {
         url: 'https://api.x.ai/v1/responses',
         headers: {
@@ -68,7 +68,7 @@ const PROVIDERS = {
         body: JSON.stringify({
           model: 'grok-4.5',
           max_output_tokens: maxTokens,
-          input: prompt(text, tone, target),
+          input: prompt(text, tone, target, instruction),
         }),
       };
     },
@@ -78,7 +78,7 @@ const PROVIDERS = {
   },
   groq: {
     name: 'Groq',
-    buildRequest(text, tone, maxTokens, target) {
+    buildRequest(text, tone, maxTokens, target, instruction) {
       return {
         url: 'https://api.groq.com/openai/v1/chat/completions',
         headers: {
@@ -88,7 +88,7 @@ const PROVIDERS = {
         body: JSON.stringify({
           model: 'llama-3.3-70b-versatile',
           max_tokens: maxTokens,
-          messages: [{ role: 'user', content: prompt(text, tone, target) }],
+          messages: [{ role: 'user', content: prompt(text, tone, target, instruction) }],
         }),
       };
     },
@@ -98,11 +98,12 @@ const PROVIDERS = {
   },
 };
 
-function prompt(text, tone, target) {
+function prompt(text, tone, target, instruction) {
   const targetHint = target === 'email'
     ? ' This will be sent as an email, so use proper email structure and formatting.'
     : ' This will be sent via a chat/messaging app (e.g. Teams), so keep it concise and conversational.';
-  return `Rewrite the following text in a ${tone} tone. Fix any grammar or spelling mistakes.${targetHint} Return ONLY the rewritten text, nothing else, no preamble.\n\nText: ${text}`;
+  const instr = instruction ? ` Additional instructions: ${instruction}` : '';
+  return `Rewrite the following text in a ${tone} tone. Fix any grammar or spelling mistakes.${targetHint}${instr} Return ONLY the rewritten text, nothing else, no preamble.\n\nText: ${text}`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -120,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainContent = document.getElementById('mainContent');
   const providerLabel = document.getElementById('providerLabel');
   const targetGroup = document.getElementById('targetGroup');
+  const instructionInput = document.getElementById('instruction');
 
   let selectedTone = 'polite';
   let selectedTarget = 'teams';
@@ -194,7 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     provider.key = apiKey;
-    const req = provider.buildRequest(text, selectedTone, 1024, selectedTarget);
+    const instruction = instructionInput ? instructionInput.value.trim() : '';
+    const req = provider.buildRequest(text, selectedTone, 1024, selectedTarget, instruction);
 
     setLoading(true);
 
