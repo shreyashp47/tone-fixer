@@ -143,7 +143,6 @@ body {
   background: #0e0e14;
   color: #e0e0e0;
   outline: none;
-  margin-bottom: 8px;
   cursor: pointer;
   appearance: auto;
   transition: border-color 0.15s;
@@ -183,10 +182,25 @@ body {
   border-color: #7c3aed;
 }
 
+.row-tone {
+  align-items: flex-end;
+  margin-bottom: 8px;
+}
+
+.col-generate {
+  flex: 0 0 auto;
+  min-width: 100px;
+}
+
+.col-generate .btn {
+  margin-bottom: 0;
+  height: 100%;
+  white-space: nowrap;
+}
+
 .btn-primary {
   background: #7c3aed;
   color: #fff;
-  margin-bottom: 8px;
 }
 
 .btn-primary:hover:not(:disabled) {

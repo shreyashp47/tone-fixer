@@ -45,18 +45,26 @@
       <label for="inputText" class="label">Your text</label>
       <textarea id="inputText" class="textarea" placeholder="Paste your text here..."></textarea>
 
-      <label class="label">Tone</label>
-      <select id="toneSelect" class="select-input">
-        <option value="polite">Polite</option>
-        <option value="casual">Casual</option>
-        <option value="formal">Formal</option>
-        <option value="professional">Professional</option>
-        <option value="friendly">Friendly</option>
-        <option value="confident">Confident</option>
-        <option value="empathetic">Empathetic</option>
-        <option value="concise">Concise</option>
-        <option value="persuasive">Persuasive</option>
-      </select>
+      <div class="row row-tone">
+        <div class="col">
+          <label class="label">Tone</label>
+          <select id="toneSelect" class="select-input">
+            <option value="polite">Polite</option>
+            <option value="casual">Casual</option>
+            <option value="formal">Formal</option>
+            <option value="professional">Professional</option>
+            <option value="friendly">Friendly</option>
+            <option value="confident">Confident</option>
+            <option value="empathetic">Empathetic</option>
+            <option value="concise">Concise</option>
+            <option value="persuasive">Persuasive</option>
+          </select>
+        </div>
+        <div class="col-generate">
+          <label class="label">&nbsp;</label>
+          <button id="generateBtn" class="btn btn-primary">Generate</button>
+        </div>
+      </div>
 
       <label class="label">Send to</label>
       <div class="target-group" id="targetGroup">
@@ -66,8 +74,6 @@
 
       <label for="instruction" class="label">Instructions (optional)</label>
       <input type="text" id="instruction" class="text-input" placeholder="e.g. Make it sound more professional..." />
-
-      <button id="generateBtn" class="btn btn-primary">Generate</button>
 
       <div id="errorMsg" class="error-msg hidden"></div>
 
