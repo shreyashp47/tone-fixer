@@ -56,7 +56,8 @@
       height: 10px;
       border-radius: 50%;
     }
-    .dot-red { background: #ff5f57; }
+    .dot-red { background: #ff5f57; cursor: pointer; }
+    .dot-red:hover { background: #ff7b72; }
     .dot-yellow { background: #ffbd2e; }
     .dot-green { background: #28c840; }
 
@@ -222,7 +223,7 @@
 <body>
   <div class="card">
     <div class="terminal-bar">
-      <span class="terminal-dot dot-red"></span>
+      <span class="terminal-dot dot-red" id="closeTab"></span>
       <span class="terminal-dot dot-yellow"></span>
       <span class="terminal-dot dot-green"></span>
       <span class="terminal-title">~/.config/tone-fixer</span>

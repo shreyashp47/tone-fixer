@@ -47,7 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const keyHint = document.getElementById('keyHint');
   const saveBtn = document.getElementById('save');
   const status = document.getElementById('status');
+  const closeTab = document.getElementById('closeTab');
   const openPopupLink = document.getElementById('openPopupLink');
+
+  if (closeTab) {
+    closeTab.addEventListener('click', () => window.close());
+  }
 
   if (openPopupLink) {
     openPopupLink.addEventListener('click', (e) => {
