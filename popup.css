@@ -13,14 +13,14 @@ body {
 }
 
 .container {
-  padding: 16px;
+  padding: 12px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .header-left {
@@ -30,7 +30,7 @@ body {
 }
 
 .title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: #fff;
 }
@@ -90,9 +90,9 @@ body {
 
 .label {
   display: block;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   color: #666;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -100,12 +100,12 @@ body {
 
 .textarea {
   width: 100%;
-  min-height: 72px;
-  padding: 10px;
-  font-size: 13px;
+  min-height: 60px;
+  padding: 8px;
+  font-size: 12px;
   font-family: inherit;
   border: 1px solid #2a2a3a;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #0e0e14;
   color: #e0e0e0;
   resize: vertical;
@@ -118,7 +118,7 @@ body {
 }
 
 .textarea-result {
-  min-height: 72px;
+  min-height: 60px;
   background: #0a0a0f;
   color: #ccc;
 }
@@ -135,15 +135,15 @@ body {
 
 .select-input {
   width: 100%;
-  padding: 8px 10px;
-  font-size: 12px;
+  padding: 6px 8px;
+  font-size: 11px;
   font-family: inherit;
   border: 1px solid #2a2a3a;
-  border-radius: 6px;
+  border-radius: 5px;
   background: #0e0e14;
   color: #e0e0e0;
   outline: none;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   cursor: pointer;
   appearance: auto;
   transition: border-color 0.15s;
@@ -155,11 +155,11 @@ body {
 
 .btn {
   width: 100%;
-  padding: 10px;
-  font-size: 13px;
+  padding: 8px;
+  font-size: 12px;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background 0.15s;
   font-family: inherit;
@@ -167,15 +167,15 @@ body {
 
 .text-input {
   width: 100%;
-  padding: 8px 10px;
-  font-size: 12px;
+  padding: 6px 8px;
+  font-size: 11px;
   font-family: inherit;
   border: 1px solid #2a2a3a;
-  border-radius: 6px;
+  border-radius: 5px;
   background: #0e0e14;
   color: #e0e0e0;
   outline: none;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   transition: border-color 0.15s;
 }
 
@@ -186,7 +186,7 @@ body {
 .btn-primary {
   background: #7c3aed;
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -202,7 +202,7 @@ body {
   background: #1a1a24;
   color: #ccc;
   border: 1px solid #2a2a3a;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .btn-secondary:hover {
@@ -212,12 +212,13 @@ body {
 .notice {
   background: rgba(255, 189, 46, 0.08);
   border: 1px solid rgba(255, 189, 46, 0.2);
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 12px;
-  margin-bottom: 12px;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 11px;
+  margin-bottom: 8px;
   color: #ffbd2e;
   text-align: center;
+  line-height: 1.4;
 }
 
 .notice a {
@@ -229,27 +230,27 @@ body {
 .error-msg {
   background: rgba(255, 95, 87, 0.1);
   border: 1px solid rgba(255, 95, 87, 0.2);
-  border-radius: 6px;
-  padding: 10px;
-  font-size: 12px;
-  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 11px;
+  margin-bottom: 6px;
   color: #ff5f57;
   word-break: break-word;
 }
 
 .target-group {
   display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
 .target-btn {
   flex: 1;
-  padding: 6px 0;
-  font-size: 11px;
+  padding: 5px 0;
+  font-size: 10px;
   font-weight: 500;
   border: 1px solid #2a2a3a;
-  border-radius: 6px;
+  border-radius: 5px;
   background: transparent;
   color: #888;
   cursor: pointer;
@@ -270,9 +271,9 @@ body {
 
 .spinner {
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: #7c3aed;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-family: 'JetBrains Mono', monospace;
 }
 
