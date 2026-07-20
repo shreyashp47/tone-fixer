@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tone Fixer</title>
+  <link rel="stylesheet" href="popup.css" />
+  <link rel="icon" type="image/png" href="icons/icon16.png" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-left">
+        <img src="icons/icon16.png" alt="" class="header-icon" />
+        <h1 class="title">Tone <span>Fixer</span></h1>
+      </div>
+      <span class="provider-badge" id="providerLabel"></span>
+    </div>
+
+    <div id="missingKeyNotice" class="notice hidden">
+      No API key set.
+      <a href="#" id="openOptionsLink">Open settings</a> to add one.
+    </div>
+
+    <div id="mainContent">
+      <label for="inputText" class="label">Your text</label>
+      <textarea id="inputText" class="textarea" placeholder="Paste your text here..."></textarea>
+
+      <div class="row">
+        <div class="col">
+          <label class="label">Tone</label>
+          <div class="tone-group" id="toneGroup">
+            <button class="tone-btn" data-tone="polite">Polite</button>
+            <button class="tone-btn" data-tone="casual">Casual</button>
+            <button class="tone-btn" data-tone="formal">Formal</button>
+          </div>
+        </div>
+        <div class="col col-narrow">
+          <label class="label">Length</label>
+          <div class="length-group" id="lengthGroup">
+            <button class="length-btn active" data-length="brief">Brief</button>
+            <button class="length-btn" data-length="detailed">Detailed</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class="label">Send to</label>
+          <div class="target-group" id="targetGroup">
+            <button class="target-btn active" data-target="teams">Teams / Chat</button>
+            <button class="target-btn" data-target="email">Email</button>
+          </div>
+        </div>
+        <div class="col col-narrow">
+          <label for="sentenceCount" class="label">Sentences</label>
+          <input type="number" id="sentenceCount" class="num-input" min="1" max="20" step="1" value="3" />
+        </div>
+      </div>
+
+      <button id="generateBtn" class="btn btn-primary">Generate</button>
+
+      <div id="errorMsg" class="error-msg hidden"></div>
+
+      <div id="loadingSpinner" class="spinner hidden">Rewriting…</div>
+
+      <label for="outputText" class="label">Result</label>
+      <textarea id="outputText" class="textarea textarea-result" readonly placeholder="Rewritten text will appear here..."></textarea>
+
+      <button id="copyBtn" class="btn btn-secondary">Copy to Clipboard</button>
+
+      <div class="footer">
+        <a href="#" id="settingsLink">Settings</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

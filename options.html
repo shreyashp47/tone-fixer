@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tone Fixer — Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a0f;
+      min-height: 100vh;
+      padding: 32px 16px;
+      color: #e0e0e0;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      max-width: 440px;
+      margin: 0 auto;
+      background: #121218;
+      border: 1px solid #1e1e2a;
+      border-radius: 12px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #1a1a24;
+      border-bottom: 1px solid #1e1e2a;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #28c840; }
+
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      margin-left: 4px;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #7c3aed;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .logo-text span { color: #7c3aed; }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    select, input[type="password"] {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      background: #0e0e14;
+      color: #e0e0e0;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+      cursor: pointer;
+    }
+
+    select:focus, input:focus {
+      border-color: #7c3aed;
+    }
+
+    .key-hint {
+      margin-top: 6px;
+      font-size: 12px;
+    }
+    .key-hint a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+    .key-hint a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      font-family: inherit;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: #7c3aed;
+      color: #fff;
+      margin-top: 10px;
+    }
+    .btn-primary:hover { background: #6d28d9; }
+
+    #status {
+      margin-top: 12px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 10px 14px;
+      border-radius: 6px;
+      display: none;
+    }
+    #status.visible { display: block; }
+    #status.success {
+      background: rgba(40, 200, 64, 0.1);
+      color: #28c840;
+      border: 1px solid rgba(40, 200, 64, 0.2);
+    }
+    #status.error {
+      background: rgba(255, 95, 87, 0.1);
+      color: #ff5f57;
+      border: 1px solid rgba(255, 95, 87, 0.2);
+    }
+
+    .dev-section {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #1e1e2a;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dev-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #2a2a3a;
+      flex-shrink: 0;
+    }
+
+    .dev-info {
+      flex: 1;
+    }
+    .dev-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e0e0e0;
+    }
+    .dev-name a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+    .dev-name a:hover {
+      text-decoration: underline;
+    }
+    .dev-role {
+      font-size: 11px;
+      color: #666;
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="terminal-bar">
+      <span class="terminal-dot dot-red"></span>
+      <span class="terminal-dot dot-yellow"></span>
+      <span class="terminal-dot dot-green"></span>
+      <span class="terminal-title">~/.config/tone-fixer</span>
+    </div>
+
+    <div class="card-body">
+      <div class="logo">
+        <div class="logo-icon">TF</div>
+        <div class="logo-text">Tone <span>Fixer</span></div>
+      </div>
+
+      <div class="section">
+        <label for="provider">AI Provider</label>
+        <select id="provider">
+          <option value="groq">Groq (Free)</option>
+          <option value="google">Gemini (Billing)</option>
+          <option value="anthropic">Claude (Billing)</option>
+          <option value="openai">ChatGPT (Billing)</option>
+          <option value="grok">xAI Grok (Billing)</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <label for="apiKey" id="keyLabel">API Key</label>
+        <input type="password" id="apiKey" placeholder="gsk_..." />
+        <div class="key-hint" id="keyHint"></div>
+        <button class="btn btn-primary" id="save">Save</button>
+      </div>
+
+      <div id="status"></div>
+
+      <div class="dev-section">
+        <img class="dev-avatar" src="https://shreyashp47.github.io/static/assets/profile.png" alt="Shreyash Pattewar" />
+        <div class="dev-info">
+          <div class="dev-name">
+            <a href="https://shreyashp47.github.io/" target="_blank">Shreyash Pattewar</a>
+          </div>
+          <div class="dev-role">developer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
