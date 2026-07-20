@@ -253,7 +253,7 @@ body {
 .result-footer {
   display: flex;
   gap: 6px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .result-footer .textarea {

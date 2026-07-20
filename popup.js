@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainContent = document.getElementById('mainContent');
   const providerLabel = document.getElementById('providerLabel');
   const instructionInput = document.getElementById('instruction');
+  const inputStats = document.getElementById('inputStats');
 
   // --- State ---
   let selectedTone = 'polite';
@@ -107,6 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
     instructionInput.addEventListener('input', () => {
       chrome.storage.local.set({ instructionText: instructionInput.value });
     });
+  }
+
+  // --- Live char counter on input text ---
+  if (inputText && inputStats) {
+    const updateChars = () => { inputStats.textContent = inputText.value.length + ' chars'; };
+    inputText.addEventListener('input', updateChars);
+    updateChars();
   }
 
   // --- Error helpers ---
