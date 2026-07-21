@@ -66,7 +66,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: var(--pad-container) var(--pad-container) 0;
+  padding: var(--pad-container);
 }
 
 .header {
