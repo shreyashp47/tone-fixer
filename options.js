@@ -32,6 +32,12 @@ const PROVIDER_META = {
     link: 'https://console.x.ai',
     linkText: 'Get an xAI API key',
   },
+  cerebras: {
+    label: 'Cerebras API Key',
+    placeholder: 'cerebras-...',
+    link: 'https://cloud.cerebras.ai/',
+    linkText: 'Get a Cerebras API key',
+  },
   groq: {
     label: 'Groq API Key',
     placeholder: 'gsk_...',
