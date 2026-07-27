@@ -96,7 +96,7 @@ const PROVIDERS = {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'meta-llama/llama-3.3-70b-instruct:free',
+          model: 'openai/gpt-oss-20b:free',
           max_tokens: maxTokens,
           messages: [{ role: 'user', content: prompt(text, tone, target, instruction) }],
         }),
