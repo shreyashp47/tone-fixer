@@ -86,6 +86,26 @@ const PROVIDERS = {
       return data.output[0].content[0].text;
     },
   },
+  openrouter: {
+    name: 'OpenRouter',
+    buildRequest(text, tone, maxTokens, target, instruction) {
+      return {
+        url: 'https://openrouter.ai/api/v1/chat/completions',
+        headers: {
+          'authorization': `Bearer ${this.key}`,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'meta-llama/llama-3.3-70b-instruct:free',
+          max_tokens: maxTokens,
+          messages: [{ role: 'user', content: prompt(text, tone, target, instruction) }],
+        }),
+      };
+    },
+    parseResponse(data) {
+      return data.choices[0].message.content;
+    },
+  },
   groq: {
     name: 'Groq',
     buildRequest(text, tone, maxTokens, target, instruction) {

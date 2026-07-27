@@ -32,6 +32,12 @@ const PROVIDER_META = {
     link: 'https://console.x.ai',
     linkText: 'Get an xAI API key',
   },
+  openrouter: {
+    label: 'OpenRouter API Key',
+    placeholder: 'sk-or-v1-...',
+    link: 'https://openrouter.ai/keys',
+    linkText: 'Get an OpenRouter API key',
+  },
   groq: {
     label: 'Groq API Key',
     placeholder: 'gsk_...',
