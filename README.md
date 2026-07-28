@@ -1,14 +1,19 @@
 # Tone Fixer
 
-**Rewrite any text in the perfect tone — Polite, Casual, or Formal. A Chrome extension powered by Groq (free), Claude, ChatGPT, Gemini, or Grok.**
+**Rewrite any text in the perfect tone. A Chrome extension powered by Groq (free), OpenRouter (free), Claude, ChatGPT, Gemini, or Grok.**
 
 ## Features
 
-- **Multiple AI providers** — Choose from Groq (free, no billing required), Claude, ChatGPT, Gemini, or Grok
-- **Three tone modes** — Polite, Casual, Formal
+- **Multiple AI providers** — Groq (free, no billing), OpenRouter (free, no billing), Claude, ChatGPT, Gemini, Grok
+- **9 tone modes** — Polite, Casual, Formal, Professional, Friendly, Confident, Empathetic, Concise, Persuasive
+- **Quick-pick tone pills** — One-click Polite / Casual / Formal with full dropdown for the rest
 - **Smart formatting** — Send to Teams/Chat or Email with auto-adjusted output
+- **Custom instructions** — Optional instruction field (e.g. "Sign as Shreyash")
+- **Live character counter** — See your input length in real time
+- **Output stats** — Word and character count on generated text
+- **Editable output** — Edit the result before copying
+- **One-click copy** — Clipboard icon with green checkmark feedback
 - **Dark terminal theme** — Matches the developer's portfolio aesthetic
-- **Copy to clipboard** — One-click copy of the rewritten text
 - **Privacy-first** — Your API key stays in local storage; no data sent anywhere except the AI provider you choose
 
 ## Installation
@@ -22,23 +27,25 @@
 ## Usage
 
 1. Open the popup and paste your text
-2. Select a tone (Polite / Casual / Formal)
+2. Select a tone (quick-pick pills or dropdown)
 3. Choose the target destination (Teams/Chat or Email)
-4. Click **Generate**
-5. Copy the result with one click
+4. Add optional instructions
+5. Click the play button to generate
+6. Edit or copy the result with the clipboard icon
 
 > **First time?** Open Settings and enter an API key for your preferred provider.
-> Groq offers a **free tier** (no credit card) — see the [API Key Guide](guide.html).
+> **Groq** and **OpenRouter** offer a free tier (no credit card) — see the [API Key Guide](guide.html).
 
 ## Providers
 
-| Provider | API Key Needed | Model | Free Tier |
-|----------|---------------|-------|-----------|
-| Groq | Yes | llama-3.3-70b-versatile | Yes |
-| Claude | Yes | claude-sonnet-4-5 | No |
-| ChatGPT | Yes | gpt-4o | No |
-| Gemini | Yes | gemini-2.0-flash | No |
-| Grok | Yes | grok-4.5 | No |
+| Provider | API Key Needed | Model | Free Tier | Speed |
+|----------|---------------|-------|-----------|-------|
+| Groq | Yes | llama-3.3-70b-versatile | Yes (no card) | Fast |
+| OpenRouter | Yes | gpt-oss-20b:free | Yes (no card) | Moderate |
+| Claude | Yes | claude-sonnet-4-5 | No | Fast |
+| ChatGPT | Yes | gpt-4o | No | Fast |
+| Gemini | Yes | gemini-2.0-flash | Billing required | Fast |
+| Grok | Yes | grok-4.5 | No | Fast |
 
 ## Configuration
 
