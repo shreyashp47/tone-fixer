@@ -16,6 +16,12 @@
 - **Dark terminal theme** — Matches the developer's portfolio aesthetic
 - **Privacy-first** — Your API key stays in local storage; no data sent anywhere except the AI provider you choose
 
+## Screenshots
+
+| Popup | Settings |
+|-------|----------|
+| ![Popup](screenshots/popup.png) | ![Settings](screenshots/options.png) |
+
 ## Installation
 
 1. Download or clone this repo
