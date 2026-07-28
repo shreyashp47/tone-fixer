@@ -1,14 +1,4 @@
-/**
- * Tone Fixer — Popup UI Controller
- *
- * Handles all DOM interactions: tone selection, target selection,
- * generate button, copy button, error/success feedback, settings link.
- *
- * Depends on PROVIDERS and prompt() defined in providers.js (loaded first).
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-  // --- DOM refs ---
   const inputText = document.getElementById('inputText');
   const outputText = document.getElementById('outputText');
   const outputStats = document.getElementById('outputStats');
@@ -26,11 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const instructionInput = document.getElementById('instruction');
   const inputStats = document.getElementById('inputStats');
 
-  // --- State ---
   let selectedTone = 'polite';
   let selectedTarget = 'teams';
 
-  // --- Tone quick-pick pills ---
   const toneQuickPick = document.getElementById('toneQuickPick');
   if (toneQuickPick) {
     toneQuickPick.querySelectorAll('.tone-pill').forEach((pill) => {
@@ -44,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Tone dropdown ---
   toneSelect.addEventListener('change', () => {
     selectedTone = toneSelect.value;
     if (toneQuickPick) {
@@ -55,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.set({ selectedTone });
   });
 
-  // --- Target buttons (Teams/Chat vs Email) ---
   if (targetGroup) {
     targetGroup.querySelectorAll('.target-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -67,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Load stored state ---
   chrome.storage.local.get(['selectedProvider', 'apiKeys', 'instructionText', 'selectedTone', 'selectedTarget'], (data) => {
     const id = data.selectedProvider || 'groq';
     const keys = data.apiKeys || {};
@@ -103,14 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Save instruction on every keystroke ---
   if (instructionInput) {
     instructionInput.addEventListener('input', () => {
       chrome.storage.local.set({ instructionText: instructionInput.value });
     });
   }
 
-  // --- Live char counter + generate button state on input text ---
   if (inputText && inputStats && errorMsg) {
     const updateChars = () => {
       const len = inputText.value.length;
@@ -122,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateChars();
   }
 
-  // --- Error helpers ---
   function showError(msg) {
     errorMsg.textContent = msg;
     errorMsg.classList.remove('hidden');
@@ -133,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     errorMsg.textContent = '';
   }
 
-  // --- Loading state ---
   const playIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
   const loadingIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="spin"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>`;
 
@@ -143,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingSpinner.classList.toggle('hidden', !loading);
   }
 
-  // --- Generate handler ---
   generateBtn.addEventListener('click', async () => {
     hideError();
 
@@ -160,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiKey = keys[id] || provider.defaultKey;
 
     if (!apiKey) {
-      showError('No API key found. Click the gear icon ⚙️ to add one.');
+      showError('No API key found. Click the gear icon to add one.');
       return;
     }
 
@@ -201,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setLoading(false);
   });
 
-  // --- Copy button ---
   const copyIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
   const checkIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
 
@@ -221,12 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Settings (gear icon) ---
   settingsLink.addEventListener('click', () => {
     chrome.runtime.openOptionsPage();
   });
 
-  // --- Missing-key notice link ---
   if (openOptionsLink) {
     openOptionsLink.addEventListener('click', (e) => {
       e.preventDefault();

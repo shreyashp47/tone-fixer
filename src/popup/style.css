@@ -1,16 +1,13 @@
 :root {
-  /* Popup */
   --popup-width: 380px;
   --popup-min-height: 400px;
 
-  /* Font sizes */
   --font-xs: 10px;
   --font-sm: 11px;
   --font-base: 12px;
   --font-md: 13px;
   --font-lg: 14px;
 
-  /* Spacing scale */
   --sp-1: 3px;
   --sp-2: 4px;
   --sp-3: 6px;
@@ -18,29 +15,24 @@
   --sp-5: 10px;
   --sp-6: 12px;
 
-  /* Padding */
   --pad-inline: 8px;
   --pad-container: 12px;
 
-  /* Border radius */
   --r-sm: 4px;
   --r-md: 5px;
   --r-lg: 6px;
 
-  /* Component sizes */
   --icon-btn-sm: 28px;
   --icon-btn-copy: 34px;
   --icon-btn-gen: 36px;
   --textarea-h: 60px;
   --textarea-input-h: 52px;
 
-  /* Gaps */
   --gap-sm: 4px;
   --gap-md: 6px;
   --gap-lg: 8px;
   --gap-xl: 10px;
 
-  /* Borders */
   --border: 1px solid #2a2a3a;
 }
 

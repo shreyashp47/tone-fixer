@@ -8,7 +8,7 @@
     "storage"
   ],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "src/popup/index.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
@@ -16,11 +16,11 @@
     }
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "src/options/index.html",
     "open_in_tab": true
   },
   "web_accessible_resources": [{
-    "resources": ["guide.html"],
+    "resources": ["src/guide/index.html"],
     "matches": ["<all_urls>"]
   }],
   "icons": {

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Chrome extension to rewrite text in any tone using AI.",
   "scripts": {
-    "build": "terser popup.js -o dist/popup.js && terser options.js -o dist/options.js && terser popup.css -o dist/popup.css && cp popup.html dist/ && cp options.html dist/ && cp manifest.json dist/ && cp -r icons dist/"
+    "build": "terser src/popup/app.js -o dist/popup.js && terser src/options/app.js -o dist/options.js && terser src/shared/providers.js -o dist/providers.js && terser src/popup/style.css -o dist/popup.css && cp src/popup/index.html dist/ && cp src/options/index.html dist/ && cp manifest.json dist/ && cp -r icons dist/ && cp -r src/guide dist/guide"
   },
   "devDependencies": {
     "terser": "^5.37.0"

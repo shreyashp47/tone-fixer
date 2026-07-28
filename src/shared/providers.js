@@ -1,13 +1,3 @@
-/**
- * Tone Fixer — AI Provider Configurations
- *
- * Defines all supported AI providers and builds the prompt sent to each API.
- * Each provider implements:
- *   buildRequest(text, tone, maxTokens, target, instruction)
- *   parseResponse(data)
- */
-
-/** Map of provider IDs to their display names, model info, and API details. */
 const PROVIDERS = {
   anthropic: {
     name: 'Claude',
@@ -128,14 +118,6 @@ const PROVIDERS = {
   },
 };
 
-/**
- * Build the prompt string sent to the AI.
- * @param {string} text - The user's input text to rewrite.
- * @param {string} tone - 'polite' | 'casual' | 'formal'
- * @param {string} target - 'teams' | 'email'  (determines format hint)
- * @param {string} instruction - Optional custom instruction from the user.
- * @returns {string} The full prompt.
- */
 function prompt(text, tone, target, instruction) {
   const targetHint = target === 'email'
     ? ' This will be sent as an email, so use proper email structure and formatting.'
