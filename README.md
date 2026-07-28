@@ -20,7 +20,7 @@
 
 | Popup | Settings |
 |-------|----------|
-| ![Popup](screenshots/popup.png) | ![Settings](screenshots/options.png) |
+| ![Popup](screenshots/popup.png) | ![Settings](screenshots/popup.png) |
 
 ## Installation
 
