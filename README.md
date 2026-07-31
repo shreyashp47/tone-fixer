@@ -18,9 +18,13 @@
 
 ## Screenshots
 
-| Demo | Settings |
-|------|----------|
-| ![Demo](screenshots/demo.gif) | ![Settings](screenshots/options.png) |
+<p align="center">
+  <img src="screenshots/demo.gif" alt="Tone Fixer demo" width="400">
+</p>
+
+### Settings
+
+![Settings](screenshots/options.png)
 
 ## Installation
 
