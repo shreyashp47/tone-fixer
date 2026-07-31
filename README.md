@@ -18,6 +18,8 @@
 
 ## Screenshots
 
+![Demo](screenshots/demo.gif)
+
 ![Settings](screenshots/options.png)
 
 ## Installation
