@@ -22,10 +22,6 @@
   <img src="screenshots/demo.gif" alt="Tone Fixer demo" width="400">
 </p>
 
-### Settings
-
-![Settings](screenshots/options.png)
-
 ## Installation
 
 1. Download or clone this repo
