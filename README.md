@@ -1,6 +1,12 @@
 # Tone Fixer
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **Rewrite any text in the perfect tone. A Chrome extension powered by Groq (free), OpenRouter (free), Claude, ChatGPT, Gemini, or Grok.**
+
+<p align="center">
+  <img src="screenshots/demo.gif" alt="Tone Fixer demo" width="400">
+</p>
 
 ## Features
 
@@ -15,12 +21,6 @@
 - **One-click copy** — Clipboard icon with green checkmark feedback
 - **Dark terminal theme** — Matches the developer's portfolio aesthetic
 - **Privacy-first** — Your API key stays in local storage; no data sent anywhere except the AI provider you choose
-
-## Screenshots
-
-<p align="center">
-  <img src="screenshots/demo.gif" alt="Tone Fixer demo" width="400">
-</p>
 
 ## Installation
 
@@ -70,4 +70,4 @@ No build step required — this is a plain JavaScript Chrome extension (MV3).
 
 ## License
 
-MIT
+[MIT](LICENSE) — Copyright (c) 2026 Shreyash Pattewar
