@@ -18,9 +18,9 @@
 
 ## Screenshots
 
-![Demo](screenshots/demo.gif)
-
-![Settings](screenshots/options.png)
+| Demo | Settings |
+|------|----------|
+| ![Demo](screenshots/demo.gif) | ![Settings](screenshots/options.png) |
 
 ## Installation
 
