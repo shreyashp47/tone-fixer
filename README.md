@@ -18,9 +18,9 @@
 
 ## Screenshots
 
-| Popup | Settings |
-|-------|----------|
-| ![Popup](screenshots/popup.png) | ![Settings](screenshots/options.png) |
+| Demo | Popup | Settings |
+|------|-------|----------|
+| ![Demo](screenshots/demo.gif) | ![Popup](screenshots/popup.png) | ![Settings](screenshots/options.png) |
 
 ## Installation
 
